@@ -32,6 +32,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } else {
             var authorizationHeader = request.getHeader(AUTHORIZATION);
+            //todo("The authorizationHeader is always NULL, must verify why")
             if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
                 var token = authorizationHeader.substring("Bearer ".length());
                 try {
